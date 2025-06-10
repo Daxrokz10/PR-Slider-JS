@@ -87,29 +87,27 @@ initCursor();
 updateCursor();
 
 
- let currentIndex = 0;
-        let slides = document.querySelectorAll('.slide');
-        let sliderInterval;
+let currentIndex = 0;
+let slides = document.querySelectorAll('.slide');
+let sliderInterval;
 
-        function showSlide(index) {
-            slides.forEach((slide) => {
-                slide.classList.remove('visible');
-            })
-            slides[index].classList.add('visible');
-        }
+function showSlide(index) {
+    slides.forEach((slide) => {
+        slide.classList.remove('visible');
+    });
+    slides[index].classList.add('visible');
+}
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        }
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+}
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        }
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+}
 
-        // Start the slider automatically on page load
-        window.onload = function() {
-            showSlide(currentIndex);
-            setIntervalTime(nextSlide,3000);
-        }
+// Start the slider interval
+sliderInterval = setInterval(nextSlide, 3000);
+
